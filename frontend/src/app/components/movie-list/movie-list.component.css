@@ -1,0 +1,14 @@
+.filters {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+  }
+  
+  table {
+    width: 100%;
+  }
+  
+  mat-paginator {
+    margin-top: 15px;
+  }
+  

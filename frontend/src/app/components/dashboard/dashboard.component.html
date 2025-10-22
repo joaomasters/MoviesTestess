@@ -1,0 +1,61 @@
+<mat-card>
+    <mat-card-title>Anos com mais de um vencedor</mat-card-title>
+    <table mat-table [dataSource]="multipleWinners" class="mat-elevation-z8">
+      <ng-container matColumnDef="year">
+        <th mat-header-cell *matHeaderCellDef>Ano</th>
+        <td mat-cell *matCellDef="let row">{{ row.year }}</td>
+      </ng-container>
+  
+      <ng-container matColumnDef="winnerCount">
+        <th mat-header-cell *matHeaderCellDef>Quantidade</th>
+        <td mat-cell *matCellDef="let row">{{ row.winnerCount }}</td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="['year','winnerCount']"></tr>
+      <tr mat-row *matRowDef="let row; columns: ['year','winnerCount'];"></tr>
+    </table>
+  </mat-card>
+  
+  <mat-card>
+    <mat-card-title>Top 3 Estúdios</mat-card-title>
+    <table mat-table [dataSource]="studios" class="mat-elevation-z8">
+  
+      <!-- Nome do Estúdio -->
+      <ng-container matColumnDef="studio">
+        <th mat-header-cell *matHeaderCellDef>Estúdio</th>
+        <td mat-cell *matCellDef="let row">{{ row.studio }}</td>
+      </ng-container>
+  
+      <ng-container matColumnDef="winCount">
+        <th mat-header-cell *matHeaderCellDef>Vitórias</th>
+        <td mat-cell *matCellDef="let row">{{ row.winCount }}</td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="['studio','winCount']"></tr>
+      <tr mat-row *matRowDef="let row; columns: ['studio','winCount'];"></tr>
+    </table>
+  </mat-card>
+  
+  
+  <mat-card>
+    <mat-card-title>Intervalos de Produtores</mat-card-title>
+    <strong>Mínimo</strong>
+    <div *ngFor="let p of intervals.min">{{ p.producer }} ({{ p.interval }} anos)</div>
+    <strong>Máximo</strong>
+    <div *ngFor="let p of intervals.max">{{ p.producer }} ({{ p.interval }} anos)</div>
+  </mat-card>
+  
+  <mat-card>
+    <mat-card-title>Buscar vencedores por ano</mat-card-title>
+    <mat-form-field>
+      <mat-label>Ano</mat-label>
+      <input matInput type="number" [(ngModel)]="searchYear">
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="getWinners()">Buscar</button>
+  
+    <ul>
+      <li *ngFor="let w of winners">{{ w.title }}</li>
+    </ul>
+
+  </mat-card>
+  

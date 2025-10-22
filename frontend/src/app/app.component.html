@@ -1,0 +1,10 @@
+<mat-toolbar color="primary">
+  <span>Golden Raspberry Awards</span>
+  <span class="spacer"></span>
+  <a mat-button routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Dashboard</a>
+  <a mat-button routerLink="/movies" routerLinkActive="active">Lista de Filmes</a>
+</mat-toolbar>
+
+<div class="container">
+  <router-outlet></router-outlet>
+</div>

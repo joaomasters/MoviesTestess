@@ -1,0 +1,37 @@
+<div>
+    <input type="number" placeholder="Filtrar por ano" [(ngModel)]="filterYear" (input)="applyFilters()" />
+  
+    <select [(ngModel)]="filterWinner" (change)="applyFilters()">
+      <option value="">All</option>
+      <option value="true">Yes</option>
+      <option value="false">No</option>
+    </select>
+  </div>
+  
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>ID</th>
+      <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+    </ng-container>
+  
+    <ng-container matColumnDef="year">
+      <th mat-header-cell *matHeaderCellDef>Ano</th>
+      <td mat-cell *matCellDef="let element">{{ element.year }}</td>
+    </ng-container>
+  
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef>Título</th>
+      <td mat-cell *matCellDef="let element">{{ element.title }}</td>
+    </ng-container>
+  
+    <ng-container matColumnDef="winner">
+      <th mat-header-cell *matHeaderCellDef>Winner</th>
+      <td mat-cell *matCellDef="let element">{{ element.winner ? 'Yes' : 'No' }}</td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  
+  <mat-paginator [pageSize]="10"></mat-paginator>
+  
